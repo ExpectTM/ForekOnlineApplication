@@ -1,0 +1,67 @@
+﻿@using static ForekOnlineApplication.Enums.Enums;
+@model ForekOnlineApplication.Models.Qualification
+
+@{
+    ViewData["Title"] = "AddQualification";
+}
+<br />
+
+<div class="card">
+    <div class="card-header text-center" style="background-color:brown; color:white;">
+        <h4><strong>Qualification Details</strong></h4>
+    </div>
+    <div class="row">
+        <form asp-action="AddQualification">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="QualificationName" class="control-label">Qualifcation Name</label>
+                                <input asp-for="QualificationName" class="form-control" />
+                                <span asp-validation-for="QualificationName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="QualificationDescription" class="control-label">Qualification Description</label>
+                                <input asp-for="QualificationDescription" class="form-control" />
+                                <span asp-validation-for="QualificationDescription" class="text-danger"></span>
+                            </div>
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="QualifacationType" class="control-label">Qualifcation Type</label>
+                                <input asp-for="QualifacationType" class="form-control" />
+                                <span asp-validation-for="QualifacationType" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="Level" class="control-label">Qualification Level</label>
+                                <input asp-for="Level" class="form-control" />
+                                <span asp-validation-for="Level" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <button type="submit"  class="btn btn-primary" asp-controller="" asp-action="" />Back </button>
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="reset" value="Clear" class="btn btn-secondary" />
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+

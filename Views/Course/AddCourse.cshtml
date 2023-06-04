@@ -1,0 +1,191 @@
+﻿@using static ForekOnlineApplication.Enums.Enums;
+@model ForekOnlineApplication.Models.Course
+
+@{
+    ViewData["Title"] = "AddCourse";
+}
+<br />
+
+<div class="card">
+    <div class="card-header text-center" style="background-color:brown; color:white;">
+        <h4><strong>Choose Three Courses of Your Own Choice</strong></h4>
+    </div>
+    <div class="row">
+        <form asp-action="AddCourse">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>First Choice</h3>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseName" class="control-label">Course Name</label>
+                                <input asp-for="CourseName" class="form-control" />
+                                <span asp-validation-for="CourseName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseDescription" class="control-label">Course Description</label>
+                                <input asp-for="CourseDescription" class="form-control" />
+                                <span asp-validation-for="CourseDescription" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseType" class="control-label">Course Type</label>
+                                <input asp-for="CourseType" class="form-control" />
+                                <span asp-validation-for="CourseType" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="NQL" class="control-label">NQL Level</label>
+                                <input asp-for="NQL" class="form-control" />
+                                <span asp-validation-for="NQL" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="Modules" class="control-label">Course Modules</label>
+                                <input asp-for="Modules" class="form-control" />
+                                <span asp-validation-for="Modules" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Second Choice</h3>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseName" class="control-label">Course Name</label>
+                                <input asp-for="CourseName" class="form-control" />
+                                <span asp-validation-for="CourseName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseDescription" class="control-label">Course Description</label>
+                                <input asp-for="CourseDescription" class="form-control" />
+                                <span asp-validation-for="CourseDescription" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseType" class="control-label">Course Type</label>
+                                <input asp-for="CourseType" class="form-control" />
+                                <span asp-validation-for="CourseType" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="NQL" class="control-label">NQL Level</label>
+                                <input asp-for="NQL" class="form-control" />
+                                <span asp-validation-for="NQL" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="Modules" class="control-label">Course Modules</label>
+                                <input asp-for="Modules" class="form-control" />
+                                <span asp-validation-for="Modules" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Third Choice</h3>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseName" class="control-label">Course Name</label>
+                                <input asp-for="CourseName" class="form-control" />
+                                <span asp-validation-for="CourseName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseDescription" class="control-label">Course Description</label>
+                                <input asp-for="CourseDescription" class="form-control" />
+                                <span asp-validation-for="CourseDescription" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="CourseType" class="control-label">Course Type</label>
+                                <input asp-for="CourseType" class="form-control" />
+                                <span asp-validation-for="CourseType" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="NQL" class="control-label">NQL Level</label>
+                                <input asp-for="NQL" class="form-control" />
+                                <span asp-validation-for="NQL" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="Modules" class="control-label">Course Modules</label>
+                                <input asp-for="Modules" class="form-control" />
+                                <span asp-validation-for="Modules" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+                <input type="submit" value="Back" class="btn btn-primary" />
+                <input type="submit" value="Apply" class="btn btn-primary" />
+                <input type="reset" value="Clear" class="btn btn-secondary" />
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    var subjectObject = {
+        NatedEngineering: {
+            ElectricalEngineeringN1N6: [CoureseDescription],
+            "MechanicalEngineering N4-N6": ["Description 2"],
+            "MotorMechanic N1-N3": ["Description 3"]
+        },
+
+        "Nated Business": {
+            "FarmingManagement N4-N6": ["Description 4"],
+            "HumanResourceManagementN4-N6": ["Description 5"],
+            "FinancialManagement N4-N6": ["Description 6"]
+        }
+    }
+    window.onload = function () {
+        var subjectSel = document.getElementById("subject");
+        var topicSel = document.getElementById("topic");
+        var chapterSel = document.getElementById("chapter");
+        for (var x in subjectObject) {
+            subjectSel.options[subjectSel.options.length] = new Option(x, x);
+        }
+        subjectSel.onchange = function () {
+            //empty Chapters- and Topics- dropdowns
+            chapterSel.length = 1;
+            topicSel.length = 1;
+            //display correct values
+            for (var y in subjectObject[this.value]) {
+                topicSel.options[topicSel.options.length] = new Option(y, y);
+            }
+        }
+        topicSel.onchange = function () {
+            //empty Chapters dropdown
+            chapterSel.length = 1;
+            //display correct values
+            var z = subjectObject[subjectSel.value][this.value];
+            for (var i = 0; i < z.length; i++) {
+                chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+            }
+        }
+    }
+</script>
+
+
+
+
+
+

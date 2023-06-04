@@ -1,0 +1,10 @@
+﻿@model ForekOnlineApplication.Models.Person
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="PersonId" />
+<h2>Delete Confirmed</h2>
+
+<p>Profile for @Model.FirstName @Model.LastName has been successfully deleted.</p>
+
+<a asp-action="Index" class="btn btn-primary">Back to List</a>
+
+</form>

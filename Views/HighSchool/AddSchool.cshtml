@@ -1,0 +1,54 @@
+﻿@using static ForekOnlineApplication.Enums.Enums;
+@model ForekOnlineApplication.Models.HighSchool
+
+@{
+    ViewData["Title"] = "AddSchool";
+}
+<br />
+
+<div class="card">
+    <div class="card-header text-center" style="background-color:brown; color:white;">
+        <h4><strong>School Details</strong></h4>
+    </div>
+    <div class="row">
+        <form asp-action="AddSchool">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                        <div class="card-body">
+                            <div class="row">
+           
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group col-md-6">
+                                    <label asp-for="HighSchoolName" class="control-label">High School Name</label>
+                                    <input asp-for="HighSchoolName" class="form-control" />
+                                    <span asp-validation-for="HighSchoolName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label asp-for="GradePassed" class="control-label">Grade Passed</label>
+                                    <input asp-for="GradePassed" class="form-control" />
+                                    <span asp-validation-for="GradePassed" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            <div class="form-group mt-2">
+                <input type="submit" value="Back" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="reset" value="Clear" class="btn btn-secondary" />
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
