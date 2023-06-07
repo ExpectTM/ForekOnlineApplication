@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static ForekOnlineApplication.Enums.Enums;
 
 namespace ForekOnlineApplication.Models
@@ -7,6 +8,9 @@ namespace ForekOnlineApplication.Models
     {
         [Key]
         public Guid AddressId { get; set; }
+
+        [ForeignKey("Person")]
+        public Guid PersonId { get; set; }
 
         [Display(Name = "Unit / House / Complex Number")]
         public string? AddressLine1 { get; set; }

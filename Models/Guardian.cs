@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static ForekOnlineApplication.Enums.Enums;
 
 namespace ForekOnlineApplication.Models
@@ -7,6 +8,9 @@ namespace ForekOnlineApplication.Models
     {
         [Key] 
         public Guid GuardianId { get; set; }
+
+        [ForeignKey("Person")]
+        public Guid PersonId { get; set; }
 
         public eRelationship? Relationship { get; set; }
 

@@ -19,6 +19,7 @@ namespace ForekOnlineApplication.Data
         public DbSet<Enrolment> Enrolments { get; set; }
         public DbSet<Guardian> Guardians { get; set; }
         public DbSet<HighSchool> HighSchools { get; set; }
+        public DbSet<SecondarySchool> SecondarySchools { get; set; }
         public DbSet<Institution> Institutions { get; set; }
         public DbSet<Medical> Medicals { get; set; }
         public DbSet<Payment> Payments { get; set; }

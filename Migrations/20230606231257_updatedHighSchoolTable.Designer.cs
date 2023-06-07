@@ -4,6 +4,7 @@ using ForekOnlineApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForekOnlineApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230606231257_updatedHighSchoolTable")]
+    partial class updatedHighSchoolTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -346,27 +349,6 @@ namespace ForekOnlineApplication.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Qualifications");
-                });
-
-            modelBuilder.Entity("ForekOnlineApplication.Models.SecondarySchool", b =>
-                {
-                    b.Property<Guid>("HighSchoolId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("GradePassed")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HighSchoolName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("PersonId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("HighSchoolId");
-
-                    b.ToTable("SecondarySchools");
                 });
 #pragma warning restore 612, 618
         }

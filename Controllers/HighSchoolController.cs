@@ -15,8 +15,23 @@ namespace ForekOnlineApplication.Controllers
             _context = context;
             _notyf = notyf;
         }
-        public async Task<ActionResult> AddSchool()
+        public async Task<ActionResult> AddSchool(Guid PersonId)
         {
+            if (PersonId == Guid.Empty)
+            {
+                return NotFound();
+            }
+
+            Person person = await _context.Persons.FindAsync(PersonId);
+
+            if (person is null)
+            {
+                return NotFound();
+            }
+
+            ViewData["user"] = $"{person.FirstName} {person.LastName}";
+
+            ViewData["Id"] = person.PersonId;
             return View();
         }
         [HttpPost]
@@ -31,6 +46,7 @@ namespace ForekOnlineApplication.Controllers
                 if (rc > 0)
                 {
                     _notyf.Success("High School details has been successfully Added");
+                    return RedirectToAction("AddQualification", "Qualification", new {PersonId = school.PersonId});
                 }
                 else
                 {

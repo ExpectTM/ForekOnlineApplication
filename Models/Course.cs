@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static ForekOnlineApplication.Enums.Enums;
 
 namespace ForekOnlineApplication.Models
@@ -7,6 +8,10 @@ namespace ForekOnlineApplication.Models
     {
         [Key]
         public Guid CourseId { get; set; }
+
+        [ForeignKey("Person")]
+        public Guid PersonId { get; set; }
+
         public string? CourseName { get; set; }
         public string CourseDescription { get; set; }
         public string CourseType { get; set; }

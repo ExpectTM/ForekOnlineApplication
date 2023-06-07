@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ForekOnlineApplication.Models
 {
@@ -6,6 +7,9 @@ namespace ForekOnlineApplication.Models
     {
         [Key]
         public Guid ContactId { get; set; }
+
+        [ForeignKey("Person")]
+        public Guid PersonId { get; set; }
 
         public int Phone { get; set; }
 

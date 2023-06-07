@@ -2,6 +2,7 @@
 using ForekOnlineApplication.Data;
 using ForekOnlineApplication.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace ForekOnlineApplication.Controllers
 {
@@ -17,8 +18,23 @@ namespace ForekOnlineApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddContact()
+        public async Task<IActionResult> AddContact(Guid PersonId)
         {
+            if (PersonId == Guid.Empty)
+            {
+                return NotFound();
+            }
+
+            Person person = await _context.Persons.FindAsync(PersonId);
+
+            if (person is null)
+            {
+                return NotFound();
+            }
+
+            ViewData["user"] = $"{person.FirstName} {person.LastName}";
+
+            ViewData["Id"] = person.PersonId;
             return View();
         }
 
@@ -27,18 +43,14 @@ namespace ForekOnlineApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 contact.ContactId = Helper.Utility.GenerateGuid();
-
-                
-
                 await _context.Contacts.AddAsync(contact);
-
                 var rc = await _context.SaveChangesAsync();
 
                 if (rc > 0)
                 {
                     _notyf.Success("Contact has been successfully Added");
+                    return RedirectToAction("AddGuardian", "Guardian", new { PersonId = contact.PersonId });
                 }
                 else
                 {

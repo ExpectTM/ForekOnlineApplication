@@ -16,17 +16,33 @@ namespace ForekOnlineApplication.Controllers
             _context = context;
             _notyf = notyf;
         }
-        public async Task<IActionResult> AddGuardian()
+        [HttpGet]
+        public async Task<IActionResult> AddGuardian(Guid PersonId)
         {
+            if (PersonId == Guid.Empty)
+            {
+                return NotFound();
+            }
+
+            Person person = await _context.Persons.FindAsync(PersonId);
+
+            if (person is null)
+            {
+                return NotFound();
+            }
+            ViewData["user"] = $"{person.FirstName} {person.LastName}";
+
+            ViewData["Id"] = person.PersonId;
+
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddGuardian(Guardian guardian)
         {
             if (ModelState.IsValid)
             {
-
                 guardian.GuardianId = Helper.Utility.GenerateGuid();
                 
                 await _context.Guardians.AddAsync(guardian);
@@ -35,6 +51,7 @@ namespace ForekOnlineApplication.Controllers
                 if (rc > 0)
                 {
                     _notyf.Success("Guardian has been successfully Added");
+                    return RedirectToAction("AddSchool", "SecondarySchool", new {PersonId = guardian.PersonId });
                 }
                 else
                 {
@@ -48,7 +65,7 @@ namespace ForekOnlineApplication.Controllers
                 _notyf.Error("An Error occurred");
             }
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -34,10 +34,9 @@ namespace ForekOnlineApplication.Controllers
         {
             if (ModelState.IsValid)
             {
- 
                 person.PersonId = Helper.Utility.GenerateGuid();
                 person.IsActive = true;
-                //person.CreatedOn = DateTime;
+                person.CreatedOn = Helper.Utility.CurrentDateTime();
                 person.CreatedBy = person.FirstName;
 
                 await _context.Persons.AddAsync(person);
@@ -46,6 +45,9 @@ namespace ForekOnlineApplication.Controllers
                 if (rc > 0)
                 {
                     _notyf.Success("Profile has been successfully Added");
+
+                    return RedirectToAction("AddAddress", "Address",new {PersonId = person.PersonId});
+
                 }
                 else
                 {

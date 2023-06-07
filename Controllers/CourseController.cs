@@ -15,8 +15,23 @@ namespace ForekOnlineApplication.Controllers
             _context = context;
             _notyf = notyf;
         }
-        public async Task<IActionResult> AddCourse()
+        public async Task<IActionResult> AddCourse(Guid PersonId)
         {
+            if (PersonId == Guid.Empty)
+            {
+                return NotFound();
+            }
+
+            Person person = await _context.Persons.FindAsync(PersonId);
+
+            if (person is null)
+            {
+                return NotFound();
+            }
+
+            ViewData["user"] = $"{person.FirstName} {person.LastName}";
+
+            ViewData["Id"] = person.PersonId;
             return View();
         }
 
@@ -31,14 +46,15 @@ namespace ForekOnlineApplication.Controllers
 
                 if (rc > 0)
                 {
-                    _notyf.Success("Course details has been successfully Added");
+                    _notyf.Success("You have successfully apply at Forek Institution of Technology");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     _notyf.Error("Course details could not be Added");
                 }
 
-                return RedirectToAction("AddQualification", "Qualification");
+                return View();
             }
             else
             {
