@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ForekOnlineApplication.Models
@@ -11,8 +12,12 @@ namespace ForekOnlineApplication.Models
         [ForeignKey("Person")]
         public Guid PersonId { get; set; }
 
+        
+
+        [Required]
         public int Phone { get; set; }
 
+        [Remote(action: "VerifyEmail", controller: "Contact")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email is required")]
         [DataType(DataType.EmailAddress)]
         public string UserEmail { get; set; }

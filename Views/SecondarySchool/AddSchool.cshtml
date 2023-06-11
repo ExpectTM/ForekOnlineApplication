@@ -6,46 +6,60 @@
 }
 <br />
 
-<div class="card">
-    <div class="card-header text-center" style="background-color:brown; color:white;">
-        <h4><strong>School Details</strong></h4>
-    </div>
-    <div class="row">
-        <form asp-action="AddSchool">
-            <input asp-for="PersonId" value="@ViewData["Id"]" hidden />
+<div class="card border-primary mb-3 justify-content-center" style="max-width: 34rem;">
+    <div class="card-header text-center"><h4>School Details</h4></div>
+        <div class="card-body">
             <div class="row">
-                <div class="col-md-12">
 
-                    <div class="card-body">
-                        <div class="row">
+            <form asp-action="AddSchool">
+                <input asp-for="PersonId" value="@ViewData["Id"]" hidden />
+                <div class="row">
+                    <div class="col-md-12">
 
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group col-md-6">
-                                <label asp-for="HighSchoolName" class="control-label">High School Name</label>
-                                <input asp-for="HighSchoolName" class="form-control" />
-                                <span asp-validation-for="HighSchoolName" class="text-danger"></span>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group col-md-12">
+                                    <label asp-for="HighSchoolName" class="control-label">High School Name</label>
+                                    <input asp-for="HighSchoolName" class="form-control" />
+                                    <span asp-validation-for="HighSchoolName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label asp-for="GradePassed" class="control-label">GradePassed</label>
+                                    <select asp-for="GradePassed" class="form-control GradePassed" asp-items="Html.GetEnumSelectList<eGrade>()">
+                                        <option selected="selected" value="Please select Level">
+                                            Please select Grade Passed
+                                        </option>
+                                    </select>
+                                    <span asp-validation-for="GradePassed" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label asp-for="MatricDoc" class="control-label">School Certificate</label>
+                                    <input asp-for="MatricDoc" class="form-control" />
+                                    <span asp-validation-for="MatricDoc" class="text-danger"></span>
+                                </div>
+
                             </div>
-
-                            <div class="form-group col-md-6">
-                                <label asp-for="GradePassed" class="control-label">Grade Passed</label>
-                                <input asp-for="GradePassed" class="form-control" />
-                                <span asp-validation-for="GradePassed" class="text-danger"></span>
-                            </div>
-
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group mt-2">
-                
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <input type="reset" value="Clear" class="btn btn-secondary" />
-                
-            </div>
-        </form>
+                <div class="form-group mt-2">
+
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="reset" value="Clear" class="btn btn-secondary" />
+
+                </div>
+            </form>
+
+        </div>
     </div>
 </div>
+
+
 
 
 

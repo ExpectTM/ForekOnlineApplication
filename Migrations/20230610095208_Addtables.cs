@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ForekOnlineApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateTablesInit : Migration
+    public partial class Addtables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,6 +16,7 @@ namespace ForekOnlineApplication.Migrations
                 columns: table => new
                 {
                     AddressId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AddressLine1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressLine2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     isSame = table.Column<bool>(type: "bit", nullable: false),
@@ -44,10 +45,29 @@ namespace ForekOnlineApplication.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Application",
+                columns: table => new
+                {
+                    ApplicationsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PersenId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CourseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NQL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Modules = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Application", x => x.ApplicationsId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Contacts",
                 columns: table => new
                 {
                     ContactId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Phone = table.Column<int>(type: "int", nullable: false),
                     UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -61,7 +81,8 @@ namespace ForekOnlineApplication.Migrations
                 columns: table => new
                 {
                     CourseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CourseDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CourseType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NQL = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -102,7 +123,12 @@ namespace ForekOnlineApplication.Migrations
                 columns: table => new
                 {
                     GuardianId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Relationship = table.Column<int>(type: "int", nullable: true)
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Relationship = table.Column<int>(type: "int", nullable: false),
+                    Phone = table.Column<int>(type: "int", nullable: false),
+                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,6 +140,7 @@ namespace ForekOnlineApplication.Migrations
                 columns: table => new
                 {
                     HighSchoolId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     HighSchoolName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GradePassed = table.Column<int>(type: "int", nullable: false)
                 },
@@ -170,8 +197,9 @@ namespace ForekOnlineApplication.Migrations
                     PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ApplicantId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
-                    DateOfBirth = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     Race = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<int>(type: "int", nullable: false),
@@ -192,14 +220,29 @@ namespace ForekOnlineApplication.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     QualificationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QualificationDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    QualifacationType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Level = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    QualificationType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Level = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Qualifications", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SecondarySchools",
+                columns: table => new
+                {
+                    HighSchoolId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HighSchoolName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GradePassed = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SecondarySchools", x => x.HighSchoolId);
                 });
         }
 
@@ -211,6 +254,9 @@ namespace ForekOnlineApplication.Migrations
 
             migrationBuilder.DropTable(
                 name: "Applicants");
+
+            migrationBuilder.DropTable(
+                name: "Application");
 
             migrationBuilder.DropTable(
                 name: "Contacts");
@@ -244,6 +290,9 @@ namespace ForekOnlineApplication.Migrations
 
             migrationBuilder.DropTable(
                 name: "Qualifications");
+
+            migrationBuilder.DropTable(
+                name: "SecondarySchools");
         }
     }
 }

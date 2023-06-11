@@ -38,6 +38,7 @@ namespace ForekOnlineApplication.Controllers
             return View();
         }
 
+
         [HttpPost]
         public async Task<IActionResult> AddContact(Contact contact)
         {

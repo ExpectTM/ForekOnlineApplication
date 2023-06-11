@@ -6,59 +6,71 @@
 }
 <br />
 
-<div class="card">
-    <div class="card-header text-center" style="background-color:brown; color:white;">
-        <h4><strong>Qualification Details</strong></h4>
-    </div>
-    <div class="row">
-        <form asp-action="AddQualification">
-            <input asp-for="PersonId" value="@ViewData["Id"]" hidden />
+<div class="card border-primary mb-3 justify-content-center" style="max-width: 34rem;">
+    <div class="card-header text-center"><h4>Qualifications Details</h4></div>
+        <div class="card-body">
             <div class="row">
-                <div class="col-md-12">
+            <form asp-action="AddQualification">
+                <input asp-for="PersonId" value="@ViewData["Id"]" hidden />
+                <div class="row">
+                    <div class="col-md-12">
 
-                    <div class="card-body">
-                        <div class="row">
+                        <div class="card-body">
+                            <div class="row">
 
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group col-md-6">
-                                <label asp-for="QualificationName" class="control-label">Qualifcation Name</label>
-                                <input asp-for="QualificationName" class="form-control" />
-                                <span asp-validation-for="QualificationName" class="text-danger"></span>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group col-md-12">
+                                    <label asp-for="QualificationName" class="control-label">Qualifcation Name</label>
+                                    <input asp-for="QualificationName" class="form-control" />
+                                    <span asp-validation-for="QualificationName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label asp-for="QualificationDescription" class="control-label">Qualification Description</label>
+                                    <input asp-for="QualificationDescription" class="form-control" />
+                                    <span asp-validation-for="QualificationDescription" class="text-danger"></span>
+                                </div>
+
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group col-md-12">
+                                    <label asp-for="QualificationType" class="control-label">Qualifcation Type</label>
+                                    <input asp-for="QualificationType" class="form-control" />
+                                    <span asp-validation-for="QualificationType" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label asp-for="Level" class="control-label">Level</label>
+                                    <select asp-for="Level" class="form-control Level" asp-items="Html.GetEnumSelectList<elevel>()">
+                                        <option selected="selected" value="Please select Level">
+                                            Please select Level
+                                        </option>
+                                    </select>
+                                    <span asp-validation-for="Level" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label asp-for="CertificateDoc" class="control-label">Upload Qualification Certificate</label>
+                                    <input asp-for="CertificateDoc" class="form-control" />
+                                    <span asp-validation-for="CertificateDoc" class="text-danger"></span>
+                                </div>
+
                             </div>
-
-                            <div class="form-group col-md-6">
-                                <label asp-for="QualificationDescription" class="control-label">Qualification Description</label>
-                                <input asp-for="QualificationDescription" class="form-control" />
-                                <span asp-validation-for="QualificationDescription" class="text-danger"></span>
-                            </div>
-
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group col-md-6">
-                                <label asp-for="QualificationType" class="control-label">Qualifcation Type</label>
-                                <input asp-for="QualificationType" class="form-control" />
-                                <span asp-validation-for="QualificationType" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label asp-for="Level" class="control-label">Qualification Level</label>
-                                <input asp-for="Level" class="form-control" />
-                                <span asp-validation-for="Level" class="text-danger"></span>
-                            </div>
-
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group mt-2">
-                
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <input type="reset" value="Clear" class="btn btn-secondary" />
-                
-            </div>
-        </form>
+                <div class="form-group mt-2">
+
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="reset" value="Clear" class="btn btn-secondary" />
+
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+
 
 
 

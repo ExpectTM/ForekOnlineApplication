@@ -47,7 +47,7 @@ namespace ForekOnlineApplication.Controllers
                 if (rc > 0)
                 {
                     _notyf.Success("Qualification details has been successfully Added");
-                    return RedirectToAction("AddCourse", "Course", new { PersonId = qualification.PersonId });
+                    return RedirectToAction("SelectCourse", "Course", new { PersonId = qualification.PersonId });
                 }
                 else
                 {

@@ -70,66 +70,55 @@ namespace ForekOnlineApplication.Enums
             SouthAfrica,
             Other
         }
-        public enum eNatedEngineering
+        
+
+        public enum eStatus
         {
-            ElectricalEngineeringN1N6,
-            MechanicalEngineeringN4N6,
-            MotorMechanicN1N3,
-            BoilerMakingN1N3,
-            FitterAndTurnerN1N3,
-            DieselMechanicN1N3,
-            CivilEngineeringN4N6
+            Rejected,
+            Accepted,
+            Pedding
         }
 
-        public enum eNatedBusiness
+        public enum elevel
         {
-            FarmingManagementN4N6,
-            HumanResourceManagementN4N6,
-            FinancialManagementN4N6,
-            PublicManagementN4N6,
-            MarkertingManagementN4N6
+            [Display(Name = "Level 1/N1")]
+            Level1,
+
+            [Display(Name = "Level 2/N2")]
+            Level2,
+
+            [Display(Name = "Level 3/N3")]
+            Level3,
+
+            [Display(Name = "Level 4/N4")]
+            Level4,
+
+            [Display(Name = "Level 5")]
+            Level5,
+
+            [Display(Name = "Level 6")]
+            Level6,
+
+            [Display(Name = "Level 7")]
+            Level7,
+
+            [Display(Name = "Level 8")]
+            Level8
         }
 
-        public enum eOccupationalTrades
+        public enum eGrade
         {
-            Electrician,
-            Plumber,
-            Welder,
-            Bricklayer,
-            Painter,
-            PlasterAndTiler
-        }
+            [Display(Name = "Grade 9")]
+            Grade9,
 
-        public enum eOccapactionalNonTrades
-        {
-            Bookkeeper,
-            OfficeAdministration,
-            PestManagementOfficer,
-            OccupationalHealthAndSafetyPractitioner,
-            ComputerTechnician,
-            SupplyChainPractitioner,
-            ProjectManagement
-        }
+            [Display(Name = "Grade 10")]
+            Grade10,
 
-        public enum eArplAndTradeTest
-        {
-            Electrician,
-            Plumber,
-            Welder,
-            Bricklayer,
-            Painter,
-            PlasterAndTiler
-        }
+            [Display(Name = "Grade 11")]
+            Grade11,
 
-        public enum Agriculture
-        {
-            AnimalProduction,
-            GeneralAbattoirProcesses,
-            PlantProduction,
-            PoultryProduction,
-            AbattoirSlaughteringProcess,
-            MacadamiaProductionandDehusking,
-            PestControlOperations
+            [Display(Name = "Grade 12")]
+            Grade12
         }
     }
 }

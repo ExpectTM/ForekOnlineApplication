@@ -41,12 +41,6 @@ namespace ForekOnlineApplication.Models
         public eCountry? Country1 { get; set; }
 
 
-        //Relationships
-        //public Guid PersonId { get; set; }
-        //public Person? Person { get; set; }
-        //public Medical? Medical { get; set; }
-        //public Guid? MedicalId { get; set; }
-        //public Guid? InstitutionId { get; set; }
-        //public Institution? Institution { get; set; }
+        
     }
 }

@@ -13,6 +13,7 @@ namespace ForekOnlineApplication.Data
 
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Applicant> Applicants { get; set; }
+        public DbSet<Applications> Application{ get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Department> Departments { get; set; }

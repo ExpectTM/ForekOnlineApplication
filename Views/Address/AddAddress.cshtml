@@ -6,127 +6,124 @@
 }
 <br />
 
-<div class="card">
-    <div class="card-header text-center" style="background-color:brown; color:white;">
-        <h4><strong>Address for - @ViewData["user"]</strong></h4>
-       
-    </div>
-    <div class="row">
-        <form asp-action="AddAddress">
-            <input asp-for="PersonId" value="@ViewData["Id"]" hidden />
+<div class="card border-primary mb-3 justify-content-center" style="max-width: 100rem;">
+    <div class="card-header text-center"><h4>Residing Details</h4></div>
+        <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="card-header text-center" style="background-color:brown; color:white">
-                                    <strong>Physical Address</strong>
-                                </div>
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-group col-md-6">
-                                    <label asp-for="AddressLine1" class="control-label">Physical Address Line1</label>
-                                    <input asp-for="AddressLine1" class="form-control" />
-                                    <span asp-validation-for="AddressLine1" class="text-danger"></span>
-                                </div>
 
-                                <div class="form-group col-md-6">
-                                    <label asp-for="AddressLine2" class="control-label">Physical AddressLine2</label>
-                                    <input asp-for="AddressLine2" class="form-control" />
-                                    <span asp-validation-for="AddressLine2" class="text-danger"></span>
-                                </div>
+            <form asp-action="AddAddress">
+                <input asp-for="PersonId" value="@ViewData["PersonId"]" hidden />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="card-header text-center" style="background-color:brown; color:white">
+                                        <strong>Physical Address</strong>
+                                    </div>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="AddressLine1" class="control-label">Physical Address Line1</label>
+                                        <input asp-for="AddressLine1" class="form-control AddressLine1" />
+                                        <span asp-validation-for="AddressLine1" class="text-danger"></span>
+                                    </div>
 
-                                <div class="form-group col-md-6">
-                                    <label asp-for="Province" class="control-label"> Province</label>
-                                    <select asp-for="Province" class="form-control" asp-items="Html.GetEnumSelectList<eProvince>()">
-                                        <option selected="selected" value="Please select province">
-                                            Please select province
-                                        </option>
-                                    </select>
-                                    <span asp-validation-for="Province" class="text-danger"></span>
-                                </div>
-                                
-                                <div class="form-group col-md-6">
-                                    <label asp-for="Country" class="control-label">Country</label>
-                                    <select asp-for="Country" class="form-control" asp-items="Html.GetEnumSelectList<eCountry>()">
-                                        <option selected="selected" value="Please select country">
-                                            Please select country
-                                        </option>
-                                    </select>
-                                    <span asp-validation-for="Country" class="text-danger"></span>
-                                </div>
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="AddressLine2" class="control-label">Physical AddressLine2</label>
+                                        <input asp-for="AddressLine2" class="form-control AddressLine2" />
+                                        <span asp-validation-for="AddressLine2" class="text-danger"></span>
+                                    </div>
 
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Province" class="control-label"> Province</label>
+                                        <select asp-for="Province" class="form-control Province" asp-items="Html.GetEnumSelectList<eProvince>()">
+                                            <option selected="selected" value="Please select province">
+                                                Please select province
+                                            </option>
+                                        </select>
+                                        <span asp-validation-for="Province" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Country" class="control-label">Country</label>
+                                        <select asp-for="Country" class="form-control Country" asp-items="Html.GetEnumSelectList<eCountry>()">
+                                            <option selected="selected" value="Please select country">
+                                                Please select country
+                                            </option>
+                                        </select>
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="card-header text-center" style="background-color:brown; color:white;">
+                                        <strong>Postal Address </strong>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="PostalAddressLine1" class="control-label">Postal Address Line1</label>
+                                        <input asp-for="PostalAddressLine1" class="form-control PostalAddressLine1" />
+                                        <span asp-validation-for="PostalAddressLine1" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="PostalAddressLine2" class="control-label">Postal Address Line2</label>
+                                        <input asp-for="PostalAddressLine2" class="form-control PostalAddressLine2" />
+                                        <span asp-validation-for="PostalAddressLine2" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Province1" class="control-label"> Province</label>
+                                        <select asp-for="Province1" class="form-control Province1" asp-items="Html.GetEnumSelectList<eProvince>()">
+                                            <option selected="selected" value="Please select province">
+                                                Please select province
+                                            </option>
+                                        </select>
+                                        <span asp-validation-for="Province" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Country1" class="control-label">Country</label>
+                                        <select asp-for="Country1" class="form-control Country1" asp-items="Html.GetEnumSelectList<eCountry>()">
+                                            <option selected="selected" value="Please select country">
+                                                Please select country
+                                            </option>
+                                        </select>
+                                        <span asp-validation-for="Country1" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="PostalCode" class="control-label"> Code</label>
+                                        <input asp-for="PostalCode" class="form-control Code" />
+                                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="card-header text-center" style="background-color:brown; color:white;">
-                                    <strong>Postal Address </strong>
-                                </div>
-                                
-                                <div class="form-group col-md-6">
-                                    <label asp-for="PostalAddressLine1" class="control-label">Postal Address Line1</label>
-                                    <input asp-for="PostalAddressLine1" class="form-control" />
-                                    <span asp-validation-for="PostalAddressLine1" class="text-danger"></span>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label asp-for="PostalAddressLine2" class="control-label">Postal Address Line2</label>
-                                    <input asp-for="PostalAddressLine2" class="form-control" />
-                                    <span asp-validation-for="PostalAddressLine2" class="text-danger"></span>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label asp-for="Province" class="control-label"> Province</label>
-                                    <select asp-for="Province" class="form-control" asp-items="Html.GetEnumSelectList<eProvince>()">
-                                        <option selected="selected" value="Please select province">
-                                            Please select province
-                                        </option>
-                                    </select>
-                                    <span asp-validation-for="Province" class="text-danger"></span>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label asp-for="Country1" class="control-label">Country</label>
-                                    <select asp-for="Country1" class="form-control" asp-items="Html.GetEnumSelectList<eCountry>()">
-                                        <option selected="selected" value="Please select country">
-                                            Please select country
-                                        </option>
-                                    </select>
-                                    <span asp-validation-for="Country1" class="text-danger"></span>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label asp-for="PostalCode" class="control-label"> Code</label>
-                                    <input asp-for="PostalCode" class="form-control Code" />
-                                    <span asp-validation-for="PostalCode" class="text-danger"></span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                <div class="form-group col-md-12 p-2">
+                    <label class="form-check-label">
+                        <input class="form-check-input" id="sameAsPhysicalAddress" asp-for="isSame" /> @Html.DisplayNameFor(model =>model.isSame)
+                    </label>
+                    <br/>
                 </div>
-            </div>
-            <div class="form-group col-md-12 p-2">
-                <label class="form-check-label">
-                    <input class="form-check-input" id="sameAsPhysicalAddress" asp-for="isSame" /> @Html.DisplayNameFor(model =>model.isSame)
-                </label>
-            </div>
-            <div class="form-group mt-2">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <input type="reset" value="Clear" class="btn btn-secondary" />
-            </div>
-        </form>
-    </div>
+                <div class="form-group mt-2">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="reset" value="Clear" class="btn btn-secondary" />
+                </div>
+            </form>
+
+        </div>
+     </div>
 </div>
-
-
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
@@ -137,13 +134,13 @@
 
             if (this.checked) {
 
-                $(".AddressLine1").val($(".PostalAddressLine1").val());
+                $(".PostalAddressLine1").val($(".AddressLine1").val());
 
-                $(".AddressLine2").val($(".PostalAddressLine2").val());
+                $(".PostalAddressLine2").val($(".AddressLine2").val());
 
-                $(".Province").val($(".Province1").val());
+                $(".Province1").val($(".Province").val());
 
-                $(".Country").val($(".Country1").val());
+                $(".Country1").val($(".Country").val());
 
             } else {
 
@@ -151,7 +148,7 @@
 
                 $(".AddressLine2").val('');
 
-                $(".Proince").val('');
+                $(".Province").val('');
 
                 $(".Country").val('');
 

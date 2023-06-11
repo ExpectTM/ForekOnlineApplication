@@ -16,6 +16,7 @@ namespace ForekOnlineApplication.Controllers
             _context = context;
             _notyf = notyf;
         }
+        //Adding Guardian
         [HttpGet]
         public async Task<IActionResult> AddGuardian(Guid PersonId)
         {
@@ -47,11 +48,11 @@ namespace ForekOnlineApplication.Controllers
                 
                 await _context.Guardians.AddAsync(guardian);
                 var rc = await _context.SaveChangesAsync();
-
+                ModelState.Clear();
                 if (rc > 0)
                 {
                     _notyf.Success("Guardian has been successfully Added");
-                    return RedirectToAction("AddSchool", "SecondarySchool", new {PersonId = guardian.PersonId });
+                    return RedirectToAction("AddSchool", "SecondarySchool", new { PersonId = guardian.PersonId });
                 }
                 else
                 {
@@ -67,5 +68,6 @@ namespace ForekOnlineApplication.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        
     }
 }

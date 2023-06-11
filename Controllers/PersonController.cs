@@ -3,6 +3,7 @@ using ForekOnlineApplication.Data;
 using ForekOnlineApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data.Common;
@@ -26,6 +27,7 @@ namespace ForekOnlineApplication.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+
             return View();
         }
 
@@ -42,27 +44,31 @@ namespace ForekOnlineApplication.Controllers
                 await _context.Persons.AddAsync(person);
                 var rc = await _context.SaveChangesAsync();
 
+                ModelState.Clear();
+
                 if (rc > 0)
                 {
                     _notyf.Success("Profile has been successfully Added");
 
-                    return RedirectToAction("AddAddress", "Address",new {PersonId = person.PersonId});
+                    return RedirectToAction("AddAddress", "Address", new { PersonId = person.PersonId });
 
                 }
                 else
                 {
                     _notyf.Error("Profile could not be Added");
                 }
-
-                return RedirectToAction("AddAddress", "Address");
+  
             }
             else
             {
                 _notyf.Error("An Error occurred");
             }
-
             return View();
         }
+
+                
+
+        
 
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
@@ -125,7 +131,7 @@ namespace ForekOnlineApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            if (_context.Persons == null)
+            if (_context.Application == null)
             {
                 return Problem("Entity set 'MvcPersonContext.Person'  is null.");
             }
@@ -139,7 +145,7 @@ namespace ForekOnlineApplication.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var persons = await _context.Persons.ToListAsync();
+            var persons = await _context.Courses.ToListAsync();
             return View(persons);
         }
 

@@ -6,45 +6,48 @@
 }
 <br />
 
-<div class="card">
-    <div class="card-header text-center" style="background-color:brown; color:white;">
-        <h4><strong>Contact</strong></h4>
-    </div>
-    <div class="row">
-        <form asp-action="AddContact">
-            <input asp-for="PersonId" value="@ViewData["Id"]" hidden />
+<div class="card border-primary mb-3 justify-content-center" style="max-width: 34rem;">
+    <div class="card-header text-center"><h4>Contact Details</h4></div>
+        <div class="card-body">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-group col-md-6">
-                                    <label asp-for="Phone" class="control-label">Phone</label>
-                                    <input asp-for="Phone" class="form-control" />
-                                    <span asp-validation-for="Phone" class="text-danger"></span>
-                                </div>
 
-                                <div class="form-group col-md-6">
-                                    <label asp-for="UserEmail" class="control-label">Email</label>
-                                    <input asp-for="UserEmail" class="form-control" />
-                                    <span asp-validation-for="UserEmail" class="text-danger"></span>
+            <form asp-action="AddContact">
+                <input asp-for="PersonId" value="@ViewData["Id"]" hidden />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="Phone" class="control-label">Phone</label>
+                                        <input asp-for="Phone" class="form-control" />
+                                        <span asp-validation-for="Phone" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="UserEmail" class="control-label">Email</label>
+                                        <input asp-for="UserEmail" class="form-control" />
+                                        <span asp-validation-for="UserEmail" class="text-danger"></span>
+                                    </div>
+
                                 </div>
-   
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group mt-2">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                    <input type="reset" value="Clear" class="btn btn-secondary" />
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="reset" value="Clear" class="btn btn-secondary" />
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+
+        </div>
     </div>
 </div>
+
 
 
 

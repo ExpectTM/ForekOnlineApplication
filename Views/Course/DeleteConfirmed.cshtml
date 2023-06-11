@@ -1,0 +1,11 @@
+﻿@model ForekOnlineApplication.Models.Course
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="CourseId" />
+    <h2>Delete Confirmed</h2>
+
+    <p>Course for @Model.CourseName has been successfully deleted.</p>
+
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+
+</form>

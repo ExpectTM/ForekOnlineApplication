@@ -22,21 +22,21 @@ namespace ForekOnlineApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> AddAddress(Guid PersonId)
         {
-            if(PersonId == Guid.Empty)
+            if (PersonId == Guid.Empty)
             {
                 return NotFound();
             }
 
             Person person = await _context.Persons.FindAsync(PersonId);
 
-            if(person is null)
+            if (person is null)
             {
                 return NotFound();
             }
 
             ViewData["user"] = $"{person.FirstName} {person.LastName}";
 
-            ViewData["Id"] = person.PersonId;
+            ViewData["PersonId"] = person.PersonId;
 
             return View();
         }

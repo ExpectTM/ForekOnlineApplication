@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using static ForekOnlineApplication.Enums.Enums;
 
 namespace ForekOnlineApplication.Models
 {
@@ -12,6 +13,9 @@ namespace ForekOnlineApplication.Models
         public Guid PersonId { get; set; }
 
         public string HighSchoolName { get; set; }
-        public int GradePassed { get; set; }
+        public eGrade GradePassed { get; set; }
+
+        [NotMapped]
+        public IFormFile? MatricDoc { get; set; }
     }
 }

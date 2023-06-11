@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForekOnlineApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230605142726_AddressUpdate")]
-    partial class AddressUpdate
+    [Migration("20230610095208_Addtables")]
+    partial class Addtables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,6 +81,43 @@ namespace ForekOnlineApplication.Migrations
                     b.ToTable("Applicants");
                 });
 
+            modelBuilder.Entity("ForekOnlineApplication.Models.Applications", b =>
+                {
+                    b.Property<Guid>("ApplicationsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CourseDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CourseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CourseType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Modules")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NQL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PersenId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ApplicationsId");
+
+                    b.ToTable("Application");
+                });
+
             modelBuilder.Entity("ForekOnlineApplication.Models.Contact", b =>
                 {
                     b.Property<Guid>("ContactId")
@@ -113,6 +150,7 @@ namespace ForekOnlineApplication.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CourseName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CourseType")
@@ -126,6 +164,9 @@ namespace ForekOnlineApplication.Migrations
                     b.Property<string>("NQL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("PersonId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CourseId");
 
@@ -172,11 +213,26 @@ namespace ForekOnlineApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("Relationship")
+                    b.Property<int>("Phone")
                         .HasColumnType("int");
+
+                    b.Property<int>("Relationship")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GuardianId");
 
@@ -195,6 +251,9 @@ namespace ForekOnlineApplication.Migrations
                     b.Property<string>("HighSchoolName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PersonId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("HighSchoolId");
 
@@ -271,15 +330,18 @@ namespace ForekOnlineApplication.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
+                    b.Property<string>("ApplicantId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedOn")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DateOfBirth")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -321,13 +383,11 @@ namespace ForekOnlineApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Level")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
 
-                    b.Property<string>("QualifacationType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("PersonId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("QualificationDescription")
                         .IsRequired()
@@ -337,9 +397,34 @@ namespace ForekOnlineApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("QualificationType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Qualifications");
+                });
+
+            modelBuilder.Entity("ForekOnlineApplication.Models.SecondarySchool", b =>
+                {
+                    b.Property<Guid>("HighSchoolId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("GradePassed")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HighSchoolName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PersonId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("HighSchoolId");
+
+                    b.ToTable("SecondarySchools");
                 });
 #pragma warning restore 612, 618
         }
