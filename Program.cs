@@ -1,6 +1,8 @@
 using AspNetCoreHero.ToastNotification;
 using ForekOnlineApplication.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +16,22 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddNotyf(config =>
 {
-    config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopCenter;
+    config.DurationInSeconds = 10; 
+    config.IsDismissable = true; 
+    config.Position = NotyfPosition.TopCenter;
 
 });
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.Name = "UserId";
+        options.Cookie.HttpOnly = true;
+        options.ExpireTimeSpan = TimeSpan.FromDays(1);
+        options.LoginPath = "/Account/Signin";
+        options.AccessDeniedPath = "/Account/AccessDenied";
+        options.SlidingExpiration = true;
+    });
 
 var app = builder.Build();
 
@@ -33,7 +48,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+        name: "account",
+        pattern: "Account/{action=Signup}",
+        defaults: new { controller = "Account" });
 
 
 app.MapControllerRoute(

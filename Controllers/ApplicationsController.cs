@@ -53,17 +53,11 @@ namespace ForekOnlineApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddApplications(Guid personId, Guid courseId, Applications applications)
+        public async Task<IActionResult> AddApplications(Applications applications)
         {
             if (ModelState.IsValid)
             {
-                Applications application = new Applications
-                {
-                    CourseId = courseId,
-                    PersenId = personId,
-                    CourseName = CourseName;
-
-                };
+               
 
                 applications.ApplicationsId = Helper.Utility.GenerateGuid();
                 await _context.Application.AddAsync(applications);
